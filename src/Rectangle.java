@@ -83,31 +83,25 @@ public class Rectangle
        int p1y = p1.getY();
        int p2x = p2.getX();
        int p2y = p2.getY();
-//       for (int horz = 0; horz < (Math.abs(p1.getX()-p2.getX())); horz++)
-//       {
-//           System.out.print(". ");
-//       }
-//       System.out.print('\n');
-//       for (int line = Math.abs(p1y-p2y)-2; line>0;line--)
-//       {
-//           System.out.print(". ");
-//           for (int horz = 0; horz < (Math.abs(p1x-p2x)-2); horz++)
-//           {
-//               System.out.print(" ");
-//           }
-//           System.out.print(". ");
-//           System.out.print('\n');
-//       }
-//       System.out.print(". ");
-//       for (int horz = 0; horz < (Math.abs(p1.getX()-p2.getX())); horz++)
-//       {
-//           System.out.print(". ");
-//       }
-//       System.out.print('\n');
 
        for (int line = Math.abs(p1y - p2y); line > 0; line--)
        {
-
+           if (line == Math.abs(p1y - p2y) || line == 1)
+           {
+               for (int horz = 0; horz < (Math.abs(p1.getX()-p2.getX())); horz++)
+               {
+                   System.out.print(".");
+               }
+           }
+           else
+           {
+               System.out.print(".");
+               for (int horz = 0; horz < (Math.abs(p1.getX()-p2.getX())-2); horz++)
+               {
+                   System.out.print(" ");
+               }
+               System.out.print(".");
+           }
            System.out.print('\n');
        }
    }
