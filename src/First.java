@@ -7,13 +7,8 @@ public class First
 {
     public static void  main (String [] args)
     {
-        int y;
-        for (int x = 1; x<10; x++)
-        {
-            y = x*x;
-            System.out.println(y);
-
-        }
-
+       String s = "Hello";
+       s = s.toLowerCase();
+       System.out.print(s);
     }
 }

@@ -1,4 +1,4 @@
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
 
 public class SeattleTower
 {
@@ -7,6 +7,9 @@ public class SeattleTower
         Tip();
         TopHalfTower();
         BottomHalfTower();
+        Tip();
+        Mid();
+        TopHalfTower();
     }
     public static void Tip()
     {
@@ -17,10 +20,6 @@ public class SeattleTower
                 System.out.print(" ");
             }
             System.out.print("||");
-            for (int space = 0; space<12; space++)
-            {
-                System.out.print(" ");
-            }
             System.out.print('\n');
         }
     }
@@ -64,16 +63,32 @@ public class SeattleTower
     }
     public static void BottomHalfTower()
     {
-        System.out.print('\\'+"_");
-        System.out.print('\n');
-        for (int line = 6; line >0; line -=2)
+        for (int line = 4; line >0; line --)
         {
-            for (int b =-1; b<(7-line); b++)
+            for (int b =-1; b<(7-line*2); b++)
             {
                 System.out.print(" ");
             }
             System.out.print('\\'+"_");
+            for (int a =-2; a<(line)*2+1;a++)
+            {
+                System.out.print("/\\");
+            }
+            System.out.print("_/");
+            System.out.print('\n');
+        }
+    }
+    public static void Mid()
+    {
+        for (int x =0; x <16; x++)
+        {
+            for (int space = 0; space<9; space++)
+            {
+                System.out.print(" ");
+            }
+            System.out.print("|%%||%%|");
             System.out.print('\n');
         }
     }
 }
+
