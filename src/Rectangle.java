@@ -93,7 +93,7 @@ public class Rectangle
                    System.out.print(".");
                }
            }
-           else
+           else 
            {
                System.out.print(".");
                for (int horz = 0; horz < (Math.abs(p1.getX()-p2.getX())-2); horz++)
