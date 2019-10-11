@@ -3,17 +3,17 @@ Varun Sureka
 10/4/19
 Java Period 2
 */
-import sun.jvm.hotspot.memory.Space;
 
 import java.util.Scanner;
 public class Challenge3
 {
-    //Scanner scaleScanner = new Scanner(System.in);
-    //final int x = scaleScanner.nextInt();
-    final static int x = 3;
 
+    public static int x ;
     public static void main(String[] args)
     {
+        Scanner scaleScanner = new Scanner(System.in);
+        System.out.println("Enter a number to scale the figure: (4 is standard)");
+        x= scaleScanner.nextInt();
         PlusLine();
         TopHalfTop();
         TopHalfBottom();
