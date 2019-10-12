@@ -1,9 +1,19 @@
+/*
+Varun Sureka
+10/11/19
+Java 1
+ */
 
-
+import java.util.Scanner;
 public class SeattleTower
 {
+    public static int i;
+
     public static void main (String [] args)
     {
+        Scanner scaleScanner = new Scanner(System.in);
+        System.out.println("Enter a number to scale the figure: (4 is standard)");
+        i= scaleScanner.nextInt();
         Tip();
         TopHalfTower();
         BottomHalfTower();
@@ -13,9 +23,9 @@ public class SeattleTower
     }
     public static void Tip()
     {
-        for (int tip = 0; tip<4; tip++)
+        for (int tip = i; tip>0; tip--)
         {
-            for (int space = 0; space<12; space++)
+            for (int space = 0; space<i*3; space++)
             {
                 System.out.print(" ");
             }
@@ -23,72 +33,90 @@ public class SeattleTower
             System.out.print('\n');
         }
     }
+
     public static void TopHalfTower()
     {
-// 8 spaces on first line
-//5 on second
-// 2 on third
-        System.out.print("         __/||" + '\\' +"__         ");
-        System.out.print('\n');
-        for (int line = 9; line > 0; line -=3)
+        for (int line = i*2; line > -i; line -=3)
         {
-            for (int x = 3; x < line; x++)
-            {
-                System.out.print(" ");
-            }
-            System.out.print("__/");
-            for (int y = -2; y<(10-line); y++)
-            {
-                System.out.print(":");
-            }
-            System.out.print("||");
-            for (int y = -2; y<(10-line); y++)
-            {
-                System.out.print(":");
-            }
-            System.out.print('\\'+"__");
-            for (int x = 3; x < line; x++)
-            {
-                System.out.print(" ");
-            }
+            SpaceTopHalf(line);
+            TowerColonsPyramid(line);
             System.out.print('\n');
         }
-        System.out.print("|");
-        for (int x=0; x<24; x++)
-        {
-            System.out.print("\"");
-        }
-        System.out.print("|");
-        System.out.print('\n');
+        LineThing();
     }
+
     public static void BottomHalfTower()
     {
-        for (int line = 4; line >0; line --)
+        for (int line = i+1; line >-2; line -=2)
         {
-            for (int b =-1; b<(7-line*2); b++)
-            {
-                System.out.print(" ");
-            }
-            System.out.print('\\'+"_");
-            for (int a =-2; a<(line)*2+1;a++)
-            {
-                System.out.print("/\\");
-            }
-            System.out.print("_/");
+            Spaces(line);
+            DownPyramid(line);
             System.out.print('\n');
         }
     }
     public static void Mid()
     {
-        for (int x =0; x <16; x++)
+        for (int x =0; x <(i*4); x++)
         {
-            for (int space = 0; space<9; space++)
+            for (int space = 0; space<i*3-3; space++)
             {
                 System.out.print(" ");
             }
             System.out.print("|%%||%%|");
             System.out.print('\n');
         }
+    }
+
+    public static void LineThing()
+    {
+        System.out.print("|");
+        for (int x = 0; x<i*6; x++)
+        {
+            System.out.print("\"");
+        }
+        System.out.print("|");
+        System.out.print('\n');
+    }
+
+    public static void SpaceTopHalf(int line)
+    {
+        for(int x =3; x<line+i; x++)
+        {
+            System.out.print(" ");
+        }
+        System.out.print("__/");
+    }
+
+    public static void Spaces(int line)
+    {
+        for (int x = -1; x<i-line; x++)
+        {
+            System.out.print(" ");
+        }
+        System.out.print("\\_");
+    }
+
+    public static void TowerColonsPyramid(int line)
+    {
+        for (int y =0; y<(i*2-line); y++)
+        {
+            System.out.print(":");
+        }
+        System.out.print("||");
+        for (int y =0; y<(i*2-line); y++)
+        {
+            System.out.print(":");
+        }
+        System.out.print('\\'+"__");
+    }
+
+    public static void DownPyramid(int line)
+    {
+        for (int x = 0; x<i*2+line-2; x++)
+        {
+            System.out.print("/\\");
+        }
+        System.out.print("_/");
     }
 }
 
