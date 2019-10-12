@@ -14,6 +14,7 @@ public class SeattleTower
         Scanner scaleScanner = new Scanner(System.in);
         System.out.println("Enter a number to scale the figure: (4 is standard)");
         i= scaleScanner.nextInt();
+
         Tip();
         TopHalfTower();
         BottomHalfTower();
@@ -42,7 +43,7 @@ public class SeattleTower
             TowerColonsPyramid(line);
             System.out.print('\n');
         }
-        LineThing();
+        QuotationLine();
     }
 
     public static void BottomHalfTower()
@@ -67,7 +68,7 @@ public class SeattleTower
         }
     }
 
-    public static void LineThing()
+    public static void QuotationLine()
     {
         System.out.print("|");
         for (int x = 0; x<i*6; x++)
