@@ -108,7 +108,7 @@ public class SeattleTower
         {
             System.out.print(":");
         }
-        System.out.print('\\'+"__");
+        System.out.print("\\__");
     }
 
     public static void DownPyramid(int line)

@@ -3,7 +3,7 @@ public class PointClient
 {
     public static void main (String [] args)
     {
-        /*Scanner intScan = new Scanner(System.in);
+        Scanner intScan = new Scanner(System.in);
         Point p1 = new Point(0,0);
         Point p2 = new Point(-2,-1);
         Point p3 = new Point();
@@ -22,8 +22,6 @@ public class PointClient
 
         System.out.println("Distance between points = " + p1.distance(p2));
 
-       p1.DrawPoint();
-
-         */
+       //p1.DrawPoint();
     }
 }
