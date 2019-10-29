@@ -26,7 +26,6 @@ public class EnglishLanguageCalculator
         String d = MathThing(operator, number1, number2);
 
         System.out.println(a+b+c.toLowerCase()+"is "+ d);
-//        System.out.println(b);
     }
 
     private static String NumberSwitch (int number)
@@ -102,7 +101,14 @@ public class EnglishLanguageCalculator
             case 'x':
                 return Integer.toString(number1 * number2);
             case '/':
-                return Integer.toString(number1 / number2);
+                if (number2 == 0)
+                {
+                    return "you can't divide by zero";
+                }
+                else
+                {
+                    return Integer.toString(number1 / number2);
+                }
             case '^':
                 double a = number1;
                 double b = number2;

@@ -40,6 +40,8 @@ public class Battleship
     private static Random rand = new Random();
     private static char[] board = new char[100]; //array with 100 values
 
+    // do a third board for shooting and don't show the enemy board
+
     public static void clearField() //this clears the board.
     {
         for(int i =0; i<100;i++)
@@ -132,7 +134,7 @@ public class Battleship
         {
             submarine+= 11;
         }
-//        submarine = 35;
+        submarine = 37;
 //        direction = 4;
 
         board[submarine - 1] = 's';
@@ -190,7 +192,7 @@ public class Battleship
         {
             battleship =+ 11;
         }
-//        battleship = 35;
+        battleship = 37;
         direction = 1;
 
         System.out.println(battleship);
@@ -234,26 +236,42 @@ public class Battleship
                     board[battleship + 29] = 'b';
                 }
                 break;
-//            case 2: //goes right
-//                if (submarine % 10 != 0)
-//                {
-//                    board[submarine - 1] = 's';
-//                    board[submarine] = 's';
-//                    if ((submarine + 1) % 10 != 0)
-//                    {
-//                        board[submarine + 1] = 's';
-//                    }
-//                    else
-//                    {
-//                        board[submarine - 2] = 's';
-//                    }
-//                }
-//                else
-//                {
-//                    board[submarine - 2] = 's';
-//                    board[submarine - 3] = 's';
-//                }
-//                break;
+            case 2: //goes right
+                if (battleship % 10 != 0)
+                {
+                    while (board[battleship] != ' ' || board[battleship - 1] != ' ' || board[battleship + 1] != ' ' ||  board[battleship - 2] != ' ')
+                    {
+                        battleship+=11;
+                        if (battleship >= 90)
+                        {
+                            battleship -=89;
+                        }
+                    }
+                    board[battleship - 1] = 'b';
+                    board[battleship] = 'b';
+                    if ((battleship + 1) % 10 != 0)
+                    {
+                        board[battleship + 1] = 'b';
+                    }
+                    else
+                    {
+                        board[battleship - 2] = 'b';
+                    }
+                }
+                else
+                {
+                    while (board[battleship] != ' ' || board[battleship - 1] != ' ' || board[battleship + 1] != ' ' ||  board[battleship - 2] != ' ')
+                    {
+                        battleship+=10;
+                        if (battleship >= 90)
+                        {
+                            battleship -=89;
+                        }
+                    }
+                    board[battleship - 2] = 'b';
+                    board[battleship - 3] = 'b';
+                }
+                break;
         }
     }
 
