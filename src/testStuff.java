@@ -8,19 +8,15 @@ public class testStuff
 {
     public static void main(String[] args)
     {
-        Scanner charScan = new Scanner(System.in);
-        String StringNum;
-        System.out.println("Enter a single character");
-        StringNum = charScan.next();
-        char c = StringNum.charAt(0);
-
-        if (Character.isAlphabetic(c))
+        boolean b = true;
+        if (b)
         {
-            System.out.print("true");
+            System.out.print("hello");
+
         }
         else
         {
-            System.out.print("false");
+            System.out.print("hi");
         }
     }
 }

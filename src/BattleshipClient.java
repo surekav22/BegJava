@@ -20,12 +20,20 @@ Highlight your Algorithm (10 points)
 
 Produces the right output(40 points)
  */
+import java.util.Scanner;
+import java.lang.Thread;
+
 public class BattleshipClient
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws InterruptedException
     {
         Battleship battleship = new Battleship();
-        battleship.DrawField();
-//        battleship.ArrayThing();
+        Scanner scan = new Scanner(System.in);
+        battleship.clearField();
+        battleship.RandomShips();
+      System.out.println("Where do you want to shoot?");
+      String shoot = scan.next();
+      battleship.UserInput(shoot);
+
     }
 }

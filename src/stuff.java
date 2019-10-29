@@ -11,9 +11,9 @@ public class stuff
     {
         Random random = new Random();
         Scanner scan = new Scanner(System.in);
-        System.out.println("I'm thinking of a number between 1 and 20 ");
+        System.out.println("I'm thinking of a number between 1 and 50 ");
 
-        int randomNum = random.nextInt(10)+1;
+        int randomNum = random.nextInt(50)+1;
 
         for (int x = 0; x<3; x++)
         {
