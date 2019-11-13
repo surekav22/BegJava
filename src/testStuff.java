@@ -8,15 +8,9 @@ public class testStuff
 {
     public static void main(String[] args)
     {
-        boolean b = true;
-        if (b)
-        {
-            System.out.print("hello");
-
-        }
-        else
-        {
-            System.out.print("hi");
-        }
+        String string = ("\033[3mO\033[0m");
+        System.out.println(string);
+        char Char = string.charAt(4);
+        System.out.println(Char);
     }
 }
