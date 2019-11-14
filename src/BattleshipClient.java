@@ -36,6 +36,9 @@ public class BattleshipClient
         battleship.DrawUserField(); //draws the field that you shoot on
 
 //        list to print your ships here
+        /**
+         Major algorithm for placing ships and for testing if the User is cheating
+         */
         System.out.println("Where do you want to place your carrier (5 long)? Enter a start point (enter the column then the row. Example: a1 or f8)");
         String CarrierStart = scan.next();
         System.out.println("Enter a direction (\u001B[31m1\u001B[0m is vertical and goes up. \u001B[31m2\u001B[0m is horizontal and goes to the right)");
@@ -103,9 +106,14 @@ public class BattleshipClient
             int EnemyShipHitCounter = 0;
             int MyShipHitCounter = 0;
 
-            System.out.println("Where do you want to shoot?"); //asks you to shoot somewhere
-            String shoot = scan.next();
-            battleship.UserInput(shoot);
+            String shoot = "";
+            do
+            {
+                System.out.println("Where do you want to shoot?"); //asks you to shoot somewhere
+                shoot = scan.next();
+
+            } while (!battleship.UserInput(shoot));
+            battleship.DrawShootingRange();
 
             Thread.sleep(500); //delay for shooting so that it is not as rushed
             System.out.print("AI is shooting ");
@@ -118,6 +126,8 @@ public class BattleshipClient
             System.out.print('\n');
 
             battleship.AIShoots();
+            Thread.sleep(1500);
+            Battleship.DrawShootingRange();
 
             for (int i =0; i<100; i ++) //this scans the board and determines if you win or if the ai wins
             {

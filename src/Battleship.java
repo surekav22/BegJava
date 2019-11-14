@@ -54,8 +54,9 @@ class Battleship
     private static int cruiserDirection = rand.nextInt(2) + 1;
     private static int destroyerDirection = rand.nextInt(2) + 1;
 
-    private static int CarrierSunk = 0; //these are for testing if you sunk the AI's ship or if the AI sunk your ship. they are declared externally because
-                                        // i need them to count and don't want them to reset every time the method is called.
+    //these are for testing if you sunk the AI's ship or if the AI sunk your ship. they are declared externally because
+    // i need them to count and don't want them to reset every time the method is called.
+    private static int CarrierSunk = 0;
     private static int BattleshipSunk = 0;
     private static int CruiserSunk = 0;
     private static int SubmarineSunk = 0;
@@ -226,6 +227,9 @@ class Battleship
 
     private static void PlaceCarrier(int carrier) //this takes the input of the random number and prints in the board based on what number it it.
     {
+        /**
+         Main algorithm for placing ships
+         */
 //        carrier = 34;
 //        carrierDirection = 1;
 
@@ -382,7 +386,7 @@ class Battleship
                 int g = 0;
                 if (battleship > 30)
                 {
-                    System.out.println("hi1");
+//                    System.out.println("hi1");
                     while (board[battleship - 1] != ' ' || board[battleship - 11] != ' ' ||  board[battleship - 21] != ' ' || board[battleship-31] != ' ')
                     {
                         battleship++;
@@ -394,7 +398,7 @@ class Battleship
                 }
                 else if (battleship <= 30 && battleship > 10)
                 {
-                    System.out.println("hi2");
+//                    System.out.println("hi2");
                     while (board[battleship - 1] != ' ' || board[battleship - 11] != ' ' ||  board[battleship +9] != ' ' || board[battleship+19] != ' ')
                     {
                         battleship++;
@@ -406,7 +410,7 @@ class Battleship
                 }
                 else if (battleship <= 10)
                 {
-                    System.out.println("hi3");
+//                    System.out.println("hi3");
                     while (board[battleship - 1] == 'C' || board[battleship +9] == 'C' ||  board[battleship +19] == 'C' || board[battleship+29] == 'C')
                     {
                         g++;
@@ -1398,70 +1402,83 @@ class Battleship
     }
 
 
-    public static void UserInput(String Shoot) throws InterruptedException //this method is for shooting the AI's ships.
+    public static boolean UserInput(String Shoot) throws InterruptedException //this method is for shooting the AI's ships.
     {
+
+        /**
+         Main algorithm for shooting
+         */
+
         int x = xCoord(Shoot.charAt(0)); //the user enters a coordinate and this takes the x value of that coordinate
         int y = Integer.parseInt(Shoot.substring(1)); // this takes the y value from the coordinate and shoots there.
 
         int position = ((y-1) * 10) + (x - 1); //this calculates where on the array the coordinate ids.
 
-        //then it tests to see if you sunk its ships and displays a message if you do
-        if (board[position] == 'C')
+        if (ShotBoard[position] == 'X' || ShotBoard[position] == 'O')
         {
-            ShotBoard[position] = 'X';
-            CarrierSunk++;
-            if (CarrierSunk == 5)
-            {
-                System.out.println("You have sunk their Carrier");
-                Thread.sleep(1000);
-            }
+            System.out.println("You have already shot there");
+            return false;
         }
-        else if (board[position] == 'b')
+        else
         {
-            ShotBoard[position] = 'X';
-            BattleshipSunk++;
-            if (BattleshipSunk == 4)
+            //then it tests to see if you sunk its ships and displays a message if you do
+            if (board[position] == 'C')
             {
-                System.out.println("You have sunk their Battleship");
-                Thread.sleep(1000);
+                ShotBoard[position] = 'X';
+                CarrierSunk++;
+                if (CarrierSunk == 5)
+                {
+                    System.out.println("You have sunk their Carrier");
+                    Thread.sleep(1000);
+                }
             }
-        }
-        else if (board[position] == 'c')
-        {
-            ShotBoard[position] = 'X';
-            CruiserSunk++;
-            if (CruiserSunk == 3)
+            else if (board[position] == 'b')
             {
-                System.out.println("You have sunk the Cruiser");
-                Thread.sleep(1000);
+                ShotBoard[position] = 'X';
+                BattleshipSunk++;
+                if (BattleshipSunk == 4)
+                {
+                    System.out.println("You have sunk their Battleship");
+                    Thread.sleep(1000);
+                }
             }
-        }
-        else if (board[position] == 's')
-        {
-            ShotBoard[position] = 'X';
-            SubmarineSunk++;
-            if (SubmarineSunk == 3)
+            else if (board[position] == 'c')
             {
-                System.out.println("You have sunk the Submarine");
-                Thread.sleep(1000);
+                ShotBoard[position] = 'X';
+                CruiserSunk++;
+                if (CruiserSunk == 3)
+                {
+                    System.out.println("You have sunk the Cruiser");
+                    Thread.sleep(1000);
+                }
             }
-        }
-        else if (board[position] == 'd')
-        {
-            ShotBoard[position] = 'X';
-            DestroyerSunk++;
-            if (DestroyerSunk == 2)
+            else if (board[position] == 's')
             {
-                System.out.println("You have sunk the Destroyer");
-                Thread.sleep(1000);
+                ShotBoard[position] = 'X';
+                SubmarineSunk++;
+                if (SubmarineSunk == 3)
+                {
+                    System.out.println("You have sunk the Submarine");
+                    Thread.sleep(1000);
+                }
             }
-        }
-        else //this is if you miss
-        {
-            ShotBoard[position] = 'O';
+            else if (board[position] == 'd')
+            {
+                ShotBoard[position] = 'X';
+                DestroyerSunk++;
+                if (DestroyerSunk == 2)
+                {
+                    System.out.println("You have sunk the Destroyer");
+                    Thread.sleep(1000);
+                }
+            }
+            else //this is if you miss
+            {
+                ShotBoard[position] = 'O';
+            }
+            return true;
         }
 
-        DrawShootingRange();
     }
 
     public static void AIShoots() throws InterruptedException //this is where the AI shoots from
