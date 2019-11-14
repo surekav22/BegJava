@@ -241,7 +241,6 @@ class Battleship
             carrier -=5;
         }
 
-
 //        System.out.println(carrier);
 //        System.out.println(carrierDirection);
 
