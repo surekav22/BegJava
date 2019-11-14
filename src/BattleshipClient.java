@@ -36,9 +36,6 @@ public class BattleshipClient
         battleship.DrawUserField(); //draws the field that you shoot on
 
 //        list to print your ships here
-        /**
-         Major algorithm for placing ships and for testing if the User is cheating
-         */
         System.out.println("Where do you want to place your carrier (5 long)? Enter a start point (enter the column then the row. Example: a1 or f8)");
         String CarrierStart = scan.next();
         System.out.println("Enter a direction (\u001B[31m1\u001B[0m is vertical and goes up. \u001B[31m2\u001B[0m is horizontal and goes to the right)");

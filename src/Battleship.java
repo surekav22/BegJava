@@ -225,11 +225,10 @@ class Battleship
     }
 
 
+    /** main method. it randomizes the ships*/
+    /***************************************************************************************************************************************************************************/
     private static void PlaceCarrier(int carrier) //this takes the input of the random number and prints in the board based on what number it it.
     {
-        /**
-         Main algorithm for placing ships
-         */
 //        carrier = 34;
 //        carrierDirection = 1;
 
@@ -239,7 +238,7 @@ class Battleship
         }
         else if (carrier > 94)
         {
-            submarine -=5;
+            carrier -=5;
         }
 
 
@@ -359,6 +358,8 @@ class Battleship
                 break;
         }
     }
+    /***************************************************************************************************************************************************************************/
+
 
 
 
@@ -906,6 +907,19 @@ class Battleship
         int x = xCoord(start.charAt(0));
         int y = Integer.parseInt(start.substring(1));
         int position = ((y-1) * 10) + (x - 1);
+
+        if (position == 99)
+        {
+            position-=3;
+        }
+        else if (position == 98)
+        {
+            position -=2;
+        }
+        else if (position == 97)
+        {
+            position--;
+        }
         boolean BattleshipTrue = true;
 
             if (direction == 1)
@@ -961,6 +975,7 @@ class Battleship
             }
             else // if direction = 2
             {
+//                System.out.println(position);
                 if (position % 10 != 0)
                 {
                     if (MyBoard[position] != ' ' || MyBoard[position + 1] != ' ' || MyBoard[position + 2] != ' ' || MyBoard[position + 3] != ' ')
@@ -1061,6 +1076,14 @@ class Battleship
         int position = ((y-1) * 10) + (x - 1);
         boolean CruiserTrue = true;
 
+        if (position == 99)
+        {
+            position-=2;
+        }
+        else if (position == 98)
+        {
+            position --;
+        }
         if (direction == 1)
         {
             if (position > 20)
@@ -1190,6 +1213,15 @@ class Battleship
         int y = Integer.parseInt(start.substring(1));
         int position = ((y-1) * 10) + (x - 1);
         boolean SubmarineTrue = true;
+
+        if (position == 99)
+        {
+            position-=2;
+        }
+        else if (position == 98)
+        {
+            position --;
+        }
 
         if (direction == 1)
         {
@@ -1322,6 +1354,11 @@ class Battleship
         int position = ((y-1) * 10) + (x - 1);
         boolean DestroyerTrue = true;
 
+        if (position == 99)
+        {
+            position--;
+        }
+
         if (direction == 1)
         {
             if (position > 10)
@@ -1404,11 +1441,6 @@ class Battleship
 
     public static boolean UserInput(String Shoot) throws InterruptedException //this method is for shooting the AI's ships.
     {
-
-        /**
-         Main algorithm for shooting
-         */
-
         int x = xCoord(Shoot.charAt(0)); //the user enters a coordinate and this takes the x value of that coordinate
         int y = Integer.parseInt(Shoot.substring(1)); // this takes the y value from the coordinate and shoots there.
 
